@@ -12,6 +12,8 @@
   "repository": "",
   "scripts": {
     "build": "ember build",
+    "deploy":
+      "ember build && ember github-pages:commit --message \"Deploy gh-pages from commit $(git rev-parse HEAD)\" && git push origin gh-pages:gh-pages",
     "start": "ember serve",
     "test": "ember test"
   },
