@@ -1,0 +1,73 @@
+<pre>const Button = "hello"</pre>
+{{line-clamp
+  text=escapedText
+  stripText=false
+  lines=4
+  classNames="read-more"
+  onExpand=(action "onExpand")
+  onCollapse=onCollapse
+  handleTruncate=(action "onHandleTruncate")
+}}
+<br>
+{{line-clamp
+  text=text2
+  classNames="read-more"
+  lines=1
+  handleTruncate=handleTruncate
+}}
+<br>
+{{line-clamp
+  text=text
+  classNames="read-more"
+  showMoreButton=false
+  lines=1
+}}
+<br>
+<h2>Updating truncate</h2>
+{{line-clamp
+  shouldDebug=true
+  text=text2
+  classNames="read-more"
+  interactive=false
+  onExpand=(action "onExpand")
+  truncate=truncate
+  stripText=true
+}}
+<button style="display: block; text-align: center;" {{action "toggleTruncate"}}>{{buttonText}}</button>
+<br>
+{{line-clamp
+  text=text
+  interactive=false
+  useJsOnly=true
+}}
+<br>
+{{line-clamp
+  text=text
+  lines=1
+  interactive=false
+  useJsOnly=true
+}}
+<br>
+{{line-clamp
+  text=text
+  lines=1
+  interactive=false
+}}
+<br>
+{{line-clamp
+  text=text2
+  stripText=true
+  interactive=false
+}}
+<br>
+{{line-clamp
+  text=text2
+  lines=1
+  stripText=true
+  interactive=false
+}}
+<br>
+{{line-clamp
+  text=text
+  showLessButton=false
+}}
