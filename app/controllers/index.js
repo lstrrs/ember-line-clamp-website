@@ -1,4 +1,4 @@
-import Ember from 'ember';
+/* eslint-disable no-console */
 import Controller from '@ember/controller';
 import { htmlSafe } from '@ember/string';
 
