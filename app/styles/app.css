@@ -1,5 +1,49 @@
 body {
-  margin: 12px 16px;
+  margin: 0;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 12pt;
+  color: #333;
 }
+
+nav {
+  padding: 12px;
+}
+
+h1 {
+  font-size: 42px;
+  margin: 0;
+  color: #8e44ad;
+  text-align: center;
+}
+
+h2 { color: #756bb1; }
+
+.section-content {
+  max-width: 740px;
+  margin: 0 auto;
+}
+
+.section-inner {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.text {
+  font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+.example { font-size: 18px; }
+
+.fancy-button {
+  width: 100%;
+  margin-top: 5px;
+  padding: 10px;
+  font-size: 18px;
+  background-color: transparent;
+  color: #fff;
+  background-color: #756bb1;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: 0.3s opacity;
+}
+
+.fancy-button:hover { opacity: 1; }

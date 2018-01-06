@@ -1,0 +1,10 @@
+{{line-clamp
+  text=text
+  interactive=false
+  truncate=truncate
+  useJsOnly=true
+  lines=10
+}}
+{{#if showFancyButton}}
+  <button class="fancy-button" style="display: block; text-align: center;" {{action "toggleTruncate"}}>{{buttonText}}</button>
+{{/if}}

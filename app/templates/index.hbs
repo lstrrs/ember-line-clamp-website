@@ -1,73 +1,165 @@
-<pre>const Button = "hello"</pre>
+<h2>A simple example</h2>
+<p class="text">Let's say you wanted to truncate some text with the "See more/See less" capability. Well this is easy!</p>
+
+{{code-snippet name="example1.hbs"}}
+
 {{line-clamp
-  text=escapedText
-  stripText=false
+  classNames="example"
+  text=text2
+  lines=1
+}}
+
+<p class="text">Let's increase the lines to 4</p>
+
+{{code-snippet name="example2.hbs"}}
+
+{{line-clamp
+  classNames="example"
+  text=text2
+  lines=3
+}}
+
+<h2>What else?</h2>
+<p class="text">Let's prevent users from "See less"</p>
+
+{{code-snippet name="example3.hbs"}}
+
+{{line-clamp
+  classNames="example"
+  text=text
+  showLessButton=false
+}}
+
+<h2>Can I know when a user clicks?</h2>
+<p class="text">Of course!</p>
+
+{{code-snippet name="example4.hbs"}}
+
+{{line-clamp
+  classNames="example"
+  text=text
   lines=4
-  classNames="read-more"
   onExpand=(action "onExpand")
   onCollapse=onCollapse
   handleTruncate=(action "onHandleTruncate")
 }}
-<br>
+
+<p class="text">Hint: Look at the console while clicking on "See more/See less" buttons</p>
+
+<h2>Im not a fan of the "See more/See less" text</h2>
+<p class="text">No worries, go head and change it</p>
+
+{{code-snippet name="example5.hbs"}}
+
 {{line-clamp
-  text=text2
-  classNames="read-more"
-  lines=1
-  handleTruncate=handleTruncate
-}}
-<br>
-{{line-clamp
+  classNames="example"
   text=text
-  classNames="read-more"
-  showMoreButton=false
-  lines=1
+  lines=3
+  seeMoreText="Read more"
+  seeLessText="Read less"
 }}
-<br>
-<h2>Updating truncate</h2>
+
+<h2>Let's see something cool</h2>
+<p class="text">Let's say you wanted to render some text and truncate it to one line. Well you could easily get this done with CSS but we can do the following:</p>
+
+{{code-snippet name="example6.hbs"}}
+
 {{line-clamp
-  shouldDebug=true
-  text=text2
-  classNames="read-more"
+  classNames="example"
+  text=text
+  lines=1
   interactive=false
-  onExpand=(action "onExpand")
+}}
+
+<p class="text">If you inspect the above text you will see that it uses <pre style="display: inline;">text-overflow: ellipsis;</pre>. The interactive flag prevents the truncation from being interactive as we will see later.</p>
+
+<p class="text">Let's increase the lines to 4</p>
+
+{{code-snippet name="example7.hbs"}}
+
+{{line-clamp
+  classNames="example"
+  text=text
+  lines=4
+  interactive=false
+}}
+
+<p class="text">If you are using Chrome you will notice that <pre style="display: inline">-webkit-line-clamp: 4;</pre> is used. If you are not on Chrome it will use JS to truncate the text to the specified number of lines.</p>
+
+<p class="text">Let's force JS in Chrome as well by using the <pre style="display: inline">useJsOnly=true</pre>.</p>
+
+{{code-snippet name="example8.hbs"}}
+
+{{line-clamp
+  classNames="example"
+  text=text
+  lines=4
+  interactive=false
+  useJsOnly=true
+}}
+
+<h2>Ehh, that's not really cool</h2>
+<p class="text">Well you can control the truncate from outside the component and when JS is used we apply a specific class to the sllipsis element</p>
+
+<p style="font-size: 24px; text-align: center;">🤔🤔🤔</p>
+
+<p class="text">Let's try something fancy then</p>
+
+{{code-snippet name="example9.hbs"}}
+{{!-- {{line-clamp
+  text=text
+  classNames="example"
+  interactive=false
   truncate=truncate
-  stripText=true
-}}
-<button style="display: block; text-align: center;" {{action "toggleTruncate"}}>{{buttonText}}</button>
-<br>
-{{line-clamp
-  text=text
-  interactive=false
   useJsOnly=true
 }}
-<br>
-{{line-clamp
+{{#if showFancyButton}}
+  <button class="fancy-button" style="display: block; text-align: center;" {{action "toggleTruncate"}}>{{buttonText}}</button>
+{{/if}} --}}
+{{fancy-line-clamp
   text=text
-  lines=1
+  truncate=truncate
+  buttonText=buttonText
+  onClick=(action "toggleTruncate")
+}}
+
+<p class="text">You can use <pre style="display: inline">querySelector('.lt-line-clamp__line-last .lt-line-clamp__ellipsis')</pre> and use that to figure out if the fancy button needs to be shown</p>
+
+{{code-snippet name="example10.hbs"}}
+{{!-- {{line-clamp
+  text=text
+  classNames="example"
+  interactive=false
+  truncate=truncate
+  useJsOnly=true
+  lines=10
+}}
+{{#if showFancyButton}}
+  <button class="fancy-button" style="display: block; text-align: center;" {{action "toggleTruncate"}}>{{buttonText}}</button>
+{{/if}} --}}
+{{fancy-line-clamp
+  text=text
+  truncate=truncate
+  buttonText=buttonText
+  lines=10
+  onClick=(action "toggleTruncate")
+}}
+
+<p class="text">Here we have increased the number of lines and the text has not been truncated, hence no need for the fancy button</p>
+
+<h2>One last thing</h2>
+
+<p class="text">We can update the ellipsis element!</p>
+
+{{code-snippet name="example11.hbs"}}
+
+{{line-clamp
+  classNames="example"
+  text=text
+  lines=4
   interactive=false
   useJsOnly=true
+  ellipsis="😃😃😃"
 }}
+
 <br>
-{{line-clamp
-  text=text
-  lines=1
-  interactive=false
-}}
-<br>
-{{line-clamp
-  text=text2
-  stripText=true
-  interactive=false
-}}
-<br>
-{{line-clamp
-  text=text2
-  lines=1
-  stripText=true
-  interactive=false
-}}
-<br>
-{{line-clamp
-  text=text
-  showLessButton=false
-}}
